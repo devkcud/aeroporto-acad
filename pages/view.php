@@ -17,7 +17,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Aeroporto ACAD</title>
+    <?php require_once("../setuphead.php") ?>
   </head>
   <body>
     <button class="go-back" onclick="window.location.href = 'home.php';">Voltar</button>

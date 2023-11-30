@@ -33,23 +33,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Aeroporto ACAD</title>
+    <?php require_once("../setuphead.php") ?>
+    <link rel="stylesheet" href="../css/home.css" />
   </head>
   <body>
-    <form method="GET">
-      <input type="text" name="insert" placeholder="Endereço">
+    <form id="inserir-endereco" method="GET">
+      <input type="text" name="insert" placeholder="Endereço" required>
 
-      <button>Registar</button>
+      <button class="btn">Registrar</button>
     </form>
+
+    <div class="separator"></div>
 
     <?php
       if ($result->num_rows > 0) {
-        echo "<ul>";
+        echo "<ul id='addresses'>";
 
         while($row = $result->fetch_assoc()) {
           echo "<li>";
           echo "<div class='address'>";
-          echo "<img src='../img/map.svg' width='40px' height='40px' />";
+          echo "<img src='../img/map.svg' />";
           echo "<span>" . $row["Address"] . "</span>";
           echo "</div>";
           echo "<div class='actions'>";
@@ -67,7 +70,7 @@
 
         echo "</ul>";
       } else {
-        echo "<p id='no-results'>0 Resultados</p>";
+        echo "<p class='no-results'>0 Resultados</p>";
       }
     ?>
   </body>

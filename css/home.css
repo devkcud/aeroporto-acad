@@ -1,0 +1,54 @@
+form {
+  width: fit-content;
+
+  margin: 1rem auto;
+}
+
+form input {
+  padding: 0.5rem;
+
+  border: none;
+}
+
+ul#addresses {
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  list-style: none;
+}
+
+ul#addresses li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem;
+
+  background-color: var(--bg);
+  box-shadow: 0 0 0 100vmax var(--bg);
+  clip-path: inset(0 -100vmax);
+}
+
+ul#addresses li:nth-child(odd) {
+  --bg: #eee;
+}
+
+ul#addresses li > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+ul#addresses li img {
+  width: 24px;
+  height: 24px;
+}
+
+ul#addresses li span {
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
