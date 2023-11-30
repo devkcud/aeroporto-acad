@@ -53,9 +53,13 @@
           echo "<span>" . $row["Address"] . "</span>";
           echo "</div>";
           echo "<div class='actions'>";
+          echo "<form action='view.php' method='POST'>";
+          echo "<input type='hidden' name='id' value='" . $row["AirportID"] . "' />";
+          echo "<button class='btn edit' type='submit'>Editar</button>";
+          echo "</form>";
           echo "<form method='GET'>";
           echo "<input type='hidden' name='remove' value='" . $row["AirportID"] . "' />";
-          echo "<button type='submit'>Remover</button>";
+          echo "<button class='btn remove' type='submit'>Remover</button>";
           echo "</form>";
           echo "</div>";
           echo "</li>";
