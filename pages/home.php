@@ -6,7 +6,7 @@
     $address = $_GET["insert"];
 
     $stmt = $con->prepare("INSERT INTO Airport (Address) VALUES (?)");
-    $stmt->bind_param("s", $address);
+    $stmt->bind_param("s", htmlspecialchars($address));
     $stmt->execute();
     $stmt->close();
 
