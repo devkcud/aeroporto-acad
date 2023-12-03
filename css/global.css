@@ -102,3 +102,7 @@ form#insert input {
   border: none;
 }
 
+h1.title {
+  text-align: center;
+  margin: 1rem;
+}

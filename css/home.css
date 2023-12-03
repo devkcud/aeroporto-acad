@@ -1,4 +1,4 @@
-ul#addresses {
+main#addresses ul {
   max-width: 600px;
 
   margin: 0 auto;
@@ -6,7 +6,7 @@ ul#addresses {
   list-style: none;
 }
 
-ul#addresses li {
+main#addresses ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,22 +18,22 @@ ul#addresses li {
   clip-path: inset(0 -100vmax);
 }
 
-ul#addresses li:nth-child(odd) {
+main#addresses ul li:nth-child(odd) {
   --bg: #eee;
 }
 
-ul#addresses li > div {
+main#addresses ul li > div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-ul#addresses li img {
+main#addresses ul li img {
   width: 24px;
   height: 24px;
 }
 
-ul#addresses li span {
+main#addresses ul li span {
   display: block;
   width: 150px;
   overflow: hidden;

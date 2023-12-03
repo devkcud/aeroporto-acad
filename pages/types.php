@@ -50,11 +50,15 @@
     <div class="separator"></div>
 
     <main id="plane-types">
+      <h1 class="title">Tipos de Aviões</h1>
+
       <?php
         if ($result->num_rows === 0) {
           echo "<p class='no-results'>Nenhum tipo de avião registrado.</p>";
           return;
         }
+
+        echo "<div class='types-list'>";
 
         while($row = $result->fetch_assoc()) {
           echo "<div class='type'>";
@@ -70,6 +74,8 @@
 
           echo "</div>";
         }
+
+        echo "</div>";
       ?>
     </main>
 

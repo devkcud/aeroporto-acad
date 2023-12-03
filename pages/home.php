@@ -47,33 +47,37 @@
 
     <div class="separator"></div>
 
-    <?php
-      if ($result->num_rows > 0) {
-        echo "<ul id='addresses'>";
+    <main id="addresses">
+      <h1 class="title">Aeroportos/Endereços</h1>
 
-        while($row = $result->fetch_assoc()) {
-          echo "<li>";
-          echo "<div class='address'>";
-          echo "<img src='../img/map.svg' />";
-          echo "<span>" . $row["Address"] . "</span>";
-          echo "</div>";
-          echo "<div class='actions'>";
-          echo "<form action='view.php' method='POST'>";
-          echo "<input type='hidden' name='id' value='" . $row["AirportID"] . "' />";
-          echo "<button class='btn edit' type='submit'>Editar</button>";
-          echo "</form>";
-          echo "<form method='GET'>";
-          echo "<input type='hidden' name='remove' value='" . $row["AirportID"] . "' />";
-          echo "<button class='btn remove' type='submit'>Remover</button>";
-          echo "</form>";
-          echo "</div>";
-          echo "</li>";
+      <?php
+        if ($result->num_rows > 0) {
+          echo "<ul>";
+
+          while($row = $result->fetch_assoc()) {
+            echo "<li>";
+            echo "<div class='address'>";
+            echo "<img src='../img/map.svg' />";
+            echo "<span>" . $row["Address"] . "</span>";
+            echo "</div>";
+            echo "<div class='actions'>";
+            echo "<form action='view.php' method='POST'>";
+            echo "<input type='hidden' name='id' value='" . $row["AirportID"] . "' />";
+            echo "<button class='btn edit' type='submit'>Editar</button>";
+            echo "</form>";
+            echo "<form method='GET'>";
+            echo "<input type='hidden' name='remove' value='" . $row["AirportID"] . "' />";
+            echo "<button class='btn remove' type='submit'>Remover</button>";
+            echo "</form>";
+            echo "</div>";
+            echo "</li>";
+          }
+
+          echo "</ul>";
+        } else {
+          echo "<p class='no-results'>Nenhum aeroporto registrado.</p>";
         }
-
-        echo "</ul>";
-      } else {
-        echo "<p class='no-results'>0 Resultados</p>";
-      }
-    ?>
+      ?>
+    </main>
   </body>
 </html>
