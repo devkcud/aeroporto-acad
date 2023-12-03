@@ -46,6 +46,14 @@
     header("Location: types.php");
   }
 
+  if (isset($_GET["removeall"])) {
+    $stmt = $con->prepare("DELETE FROM PlaneType");
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: types.php");
+  }
+
   $result = $con->query("SELECT * FROM PlaneType");
 ?>
 
@@ -68,7 +76,12 @@
       <button class="btn">Registrar</button>
     </form>
 
-    <button id="default" class="btn remove" style="margin: 0 auto;">Redefinir ao Padrão</button>
+    <div class="separator"></div>
+
+    <div style="display: flex; justify-content: center; gap: 1rem">
+      <button id="turndefault" class="btn remove">Redefinir Padrão</button>
+      <button id="deleteall" class="btn remove">Deletar Tudo</button>
+    </div>
 
     <div class="separator"></div>
 
@@ -101,48 +114,7 @@
       ?>
     </main>
 
-    <dialog id="confirmationDialog">
-      <p>Tem certeza de que deseja retornar ao padrão? <b>Esta ação excluirá TODOS os tipos de avião.</b></p>
-
-      <div class="separator"></div>
-
-      <section class="actions">
-        <button class="btn remove" id="confirmDelete">Sim, deletar TUDO</button>
-        <button class="btn" id="cancelDelete">Cancelar</button>
-      </section>
-    </dialog>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var confirmationDialog = document.getElementById('confirmationDialog');
-        var confirmDeleteButton = document.getElementById('confirmDelete');
-        var cancelDeleteButton = document.getElementById('cancelDelete');
-
-        function openDialog() {
-          confirmationDialog.showModal();
-        }
-
-        function closeDialog() {
-          confirmationDialog.close();
-        }
-
-        function handleConfirmation() {
-          window.location.href = 'types.php?backdefault=true';
-        }
-
-        var defaultButton = document.getElementById('default');
-        if (defaultButton) {
-          defaultButton.addEventListener('click', openDialog);
-        }
-
-        if (confirmDeleteButton) {
-          confirmDeleteButton.addEventListener('click', handleConfirmation);
-        }
-
-        if (cancelDeleteButton) {
-          cancelDeleteButton.addEventListener('click', closeDialog);
-        }
-      });
-    </script>
+    <?php createDialog('turndefault', 'Tem certeza de que deseja retornar ao padrão? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?backdefault=true', 'Sim, restaurar padrão', 'Cancelar') ?>
+    <?php createDialog('deleteall', 'Tem certeza de que deseja excluir tudo? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?removeall=true', 'Sim, deletar TUDO', 'Cancelar') ?>
   </body>
 </html>
