@@ -19,8 +19,20 @@ CREATE TABLE IF NOT EXISTS Plane (
     PlaneTypeID INT NOT NULL,
     Model VARCHAR(255) NOT NULL,
     SeatCapacity INT,
-    CargoCapacity DECIMAL(10 , 2 ),
+    CargoCapacity DECIMAL(10, 2),
+    SourceAirportID INT,
+    DestinationAirportID INT,
     PRIMARY KEY (PlaneID),
-    FOREIGN KEY (PlaneTypeID)
-        REFERENCES PlaneType (PlaneTypeID)
+    FOREIGN KEY (PlaneTypeID) REFERENCES PlaneType (PlaneTypeID),
+    FOREIGN KEY (SourceAirportID) REFERENCES Airport (AirportID),
+    FOREIGN KEY (DestinationAirportID) REFERENCES Airport (AirportID)
 );
+
+INSERT INTO PlaneType (Category, Purpose) VALUES
+    ('Boeing', 'Comercial'),
+    ('Airbus', 'Transporte'),
+    ('Bombardier', 'Militar'),
+    ('Embraer', 'Jato Regional'),
+    ('Cessna', 'Privado'),
+    ('Lockheed Martin', 'Militar'),
+    ('Gulfstream', 'Jato Executivo');
