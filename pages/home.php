@@ -39,7 +39,7 @@
   <body>
     <?php require_once("../setupheader.php") ?>
 
-    <form id="inserir-endereco" method="GET">
+    <form id="insert" method="GET">
       <input type="text" name="insert" placeholder="Endereço" required>
 
       <button class="btn">Registrar</button>
