@@ -33,7 +33,11 @@ echo "<dialog id='__dialog-$uuid'>
       var confirmDeleteButton = document.getElementById('__dialog-$uuid-confirm');
       var cancelDeleteButton = document.getElementById('__dialog-$uuid-cancel');
 
-      function openDialog() {
+      function openDialog(e) {
+        if (e.shiftKey) {
+          return handleConfirmation();
+        }
+
         confirmationDialog.showModal();
       }
 
