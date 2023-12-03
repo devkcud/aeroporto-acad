@@ -65,10 +65,8 @@
             echo "<input type='hidden' name='id' value='" . $row["AirportID"] . "' />";
             echo "<button class='btn edit' type='submit'>Editar</button>";
             echo "</form>";
-            echo "<form method='GET'>";
-            echo "<input type='hidden' name='remove' value='" . $row["AirportID"] . "' />";
-            echo "<button class='btn remove' type='submit'>Remover</button>";
-            echo "</form>";
+            echo "<button id='". $row["AirportID"] . "' class='btn remove'>Remover</button>";
+            createDialog($row["AirportID"], 'Tem certeza de que deseja excluir <b>' . $row["Address"] . '</b>?', 'home.php?remove=' . $row["AirportID"], 'Sim, deletar');
             echo "</div>";
             echo "</li>";
           }
