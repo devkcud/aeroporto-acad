@@ -1,7 +1,8 @@
 main#plane-types div.types-list {
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, 300px);
+  place-content: center;
   gap: 3rem;
 
   margin: 2rem auto;
