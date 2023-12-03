@@ -11,6 +11,24 @@ body {
   background-color: #f4f4f4;
 }
 
+header {
+  padding: 1rem;
+
+  text-align: center;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #000;
+}
+
 p.no-results {
   text-align: center;
 

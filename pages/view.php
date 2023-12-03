@@ -20,6 +20,8 @@
     <?php require_once("../setuphead.php") ?>
   </head>
   <body>
+    <?php require_once("../setupheader.php") ?>
+
     <button class="go-back" onclick="window.location.href = 'home.php';">Voltar</button>
 
     <?php
