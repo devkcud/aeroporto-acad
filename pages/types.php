@@ -81,6 +81,9 @@
     <div style="display: flex; justify-content: center; gap: 1rem">
       <button id="turndefault" class="btn remove">Redefinir Padrão</button>
       <button id="deleteall" class="btn remove">Deletar Tudo</button>
+
+      <?php createDialog('turndefault', 'Tem certeza de que deseja retornar ao padrão? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?backdefault=true', 'Sim, restaurar padrão', 'Cancelar') ?>
+      <?php createDialog('deleteall', 'Tem certeza de que deseja excluir tudo? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?removeall=true', 'Sim, deletar TUDO', 'Cancelar') ?>
     </div>
 
     <div class="separator"></div>
@@ -103,7 +106,8 @@
             echo "</div>";
 
             echo "<div class='actions'>";
-            echo "<a href='types.php?remove=" . $row["PlaneTypeID"] . "' class='btn remove'>Deletar</a>";
+            echo "<button id='". $row["PlaneTypeID"] . "' class='btn remove'>Remover</button>";
+            createDialog($row["PlaneTypeID"], 'Tem certeza de que deseja excluir <b>' . $row["Category"] . '</b>?', 'types.php?remove=' . $row["PlaneTypeID"], 'Sim, deletar');
             echo "</div>";
 
             echo "</div>";
@@ -113,8 +117,5 @@
         }
       ?>
     </main>
-
-    <?php createDialog('turndefault', 'Tem certeza de que deseja retornar ao padrão? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?backdefault=true', 'Sim, restaurar padrão', 'Cancelar') ?>
-    <?php createDialog('deleteall', 'Tem certeza de que deseja excluir tudo? <b>Esta ação excluirá TODOS os tipos de avião.</b>', 'types.php?removeall=true', 'Sim, deletar TUDO', 'Cancelar') ?>
   </body>
 </html>
