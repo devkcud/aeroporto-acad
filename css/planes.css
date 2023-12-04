@@ -64,30 +64,27 @@ div#arrow img {
   left: 0%;
 
   translate: 0 -50%;
-  rotate: 90deg;
+
+  animation: run 0s ease-in-out infinite;
 }
 
-.progress-bar-container {
-  width: calc(100% - 2rem);
-  height: 6px;
-
-  margin: 1rem;
-
-  border: 1px solid #ccc;
-  border-radius: 10px;
-
-  background-color: #f0f0f0;
-
-  overflow: hidden;
-}
-
-.progress-bar {
-  width: 0;
-  height: 100%;
-
-  background-color: #4caf50;
-
-  border-radius: 10px;
-
-  transition: width 0.1s linear;
+@keyframes run {
+  0% {
+    rotate: 90deg;
+    left: 0;
+  }
+  40% {
+    rotate: 90deg;
+  }
+  50% {
+    rotate: 270deg;
+    left: calc(100% - 24px);
+  }
+  90% {
+    rotate: 270deg;
+  }
+  100% {
+    rotate: 90deg;
+    left: 0;
+  }
 }

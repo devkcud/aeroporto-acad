@@ -177,7 +177,7 @@
             }
 
             if ($row["SourceAirportID"] && $row["DestinationAirportID"]) {
-              echo "<div id='arrow'><img src='../img/plane.svg' id='ab-" . $row["PlaneID"] . "' onload='trajectory(\"" . $row["PlaneID"] . "\")'></div>";
+              echo "<div id='arrow'><img src='../img/plane.svg' id='ab-" . $row["PlaneID"] . "' onload='trajectory(\"" . $row["PlaneID"] . "\")' data-firsttime='true'></div>";
             }
 
             if ($row["DestinationAirportID"]) {
@@ -215,32 +215,20 @@
     </main>
 
     <script>
-      let rotations = {};
+      let lastNum = 0;
 
       function trajectory(planeID) {
         const arrow = document.getElementById("ab-" + planeID);
+        let num = ((parseFloat(window.crypto.getRandomValues(new Uint32Array(1))[0].toString().substring(0, 3)) / 100) + 5).toFixed(3);
 
-        if (rotations[planeID] === undefined) {
-          rotations[planeID] = { ft: true, rot: 90, sec: Math.floor(Math.random() * 8) + 5 };
+        while (lastNum === Math.floor(num)) {
+          num = ((parseFloat(window.crypto.getRandomValues(new Uint32Array(1))[0].toString().substring(0, 3)) / 100) + 5).toFixed(3);
         }
 
-        arrow.style.transition = `left ${rotations[planeID]['sec']}s linear, rotate 0.5s ease-in-out`;
+        arrow.style.animationDuration = `${num}s`;
 
-        if (arrow.style.left === 'calc(100% - 24px)') {
-          arrow.style.left = '0%';
-        } else {
-          arrow.style.left = 'calc(100% - 24px)';
-        }
-
-        if (rotations[planeID]['ft'] === false) {
-          rotations[planeID]['rot'] -= 180;
-        }
-
-        rotations[planeID]['ft'] = false;
-
-        arrow.style.rotate = `${rotations[planeID]['rot']}deg`;
-
-        setTimeout(() => trajectory(planeID), rotations[planeID]['sec'] * 1000);
+        lastNum = Math.floor(num);
+        console.log(lastNum);
       }
     </script>
   </body>
