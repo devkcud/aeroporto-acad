@@ -39,7 +39,7 @@
   <body>
     <?php require_once("../setupheader.php") ?>
 
-    <form id="insert" method="GET">
+    <form class="insert" method="GET">
       <input type="text" name="insert" placeholder="Endereço" required>
 
       <button class="btn">Registrar</button>
@@ -61,7 +61,7 @@
             echo "<span>" . $row["Address"] . "</span>";
             echo "</div>";
             echo "<div class='actions'>";
-            echo "<form action='view.php' method='POST'>";
+            echo "<form action='view.php' method='GET'>";
             echo "<input type='hidden' name='id' value='" . $row["AirportID"] . "' />";
             echo "<button class='btn edit' type='submit'>Editar</button>";
             echo "</form>";

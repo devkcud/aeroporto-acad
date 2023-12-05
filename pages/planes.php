@@ -53,7 +53,7 @@
   <body>
     <?php require_once("../setupheader.php") ?>
 
-    <form id="insert" method="GET">
+    <form class="insert" method="GET">
       <div>
         <div>
           <label class="required" for="model">Modelo</label>

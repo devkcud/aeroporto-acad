@@ -80,6 +80,12 @@ div.separator {
   --bg-dimmed: #ccc;
 }
 
+.btn.save {
+  --bg: #558bd9;
+  --fg: #dce7f8;
+  --bg-dimmed: #b6cdee;
+}
+
 .btn:disabled {
   --bg: #ccc;
   --bg-dimmed: #ccc;
@@ -104,7 +110,7 @@ div.separator {
   margin: 1rem;
 }
 
-form#insert {
+form.insert {
   width: fit-content;
   display: flex;
 
@@ -114,8 +120,8 @@ form#insert {
   margin: 1rem auto;
 }
 
-form#insert select,
-form#insert input {
+form.insert select,
+form.insert input {
   padding: 0.5rem;
 
   border: none;
@@ -127,17 +133,17 @@ form#insert input {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-form#insert > div {
+form.insert > div {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
-form#insert > div * {
+form.insert > div * {
   flex-grow: 1;
 }
 
-form#insert > div > div {
+form.insert > div > div {
   position: relative;
 
   display: flex;
@@ -145,13 +151,13 @@ form#insert > div > div {
   gap: 0.5rem;
 }
 
-form#insert > div > div label {
+form.insert > div > div label {
   position: absolute;
   top: -50%;
   font-size: 0.8rem;
 }
 
-form#insert label.required::after {
+form.insert label.required::after {
   content: '*';
   color: #c23b22;
 
@@ -160,7 +166,7 @@ form#insert label.required::after {
 
 h1.title {
   text-align: center;
-  margin: 1rem;
+  margin: 2rem;
 }
 
 dialog {

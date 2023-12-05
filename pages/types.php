@@ -69,7 +69,7 @@
   <body>
     <?php require_once("../setupheader.php") ?>
 
-    <form id="insert" method="GET">
+    <form class="insert" method="GET">
       <input type="text" name="category" placeholder="Nome" required>
       <input type="text" name="purpose" placeholder="Tipo" required>
 
