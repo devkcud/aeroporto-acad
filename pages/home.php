@@ -16,6 +16,25 @@
   if (isset($_GET["remove"])) {
     $id = $_GET["remove"];
 
+    $stmt = $con->prepare("SELECT PlaneID FROM Plane WHERE SourceAirportID = ? OR DestinationAirportID = ?");
+    $stmt->bind_param("ss", $id, $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $planeIds = array();
+    while ($row = $result->fetch_assoc()) {
+      $planeIds[] = $row["PlaneID"];
+    }
+
+    $stmt->close();
+
+    foreach ($planeIds as $planeId) {
+      $stmt = $con->prepare("DELETE FROM Plane WHERE PlaneID = ?");
+      $stmt->bind_param("s", $planeId);
+      $stmt->execute();
+      $stmt->close();
+    }
+
     $stmt = $con->prepare("DELETE FROM Airport WHERE AirportID = ?");
     $stmt->bind_param("s", $id);
     $stmt->execute();
